@@ -28,10 +28,12 @@
 		}
 
 		.card {
+			display: inline-block;
 			width: 150px;
 			height: 150px;
 			border: 1px solid #000;
 			margin: 5px;
+
 		}
 
 		.card_text {
@@ -45,20 +47,23 @@
 			word-wrap: break-word;
 		}
 
+		.hide {
+			visibility: hidden;
+		}
 	</style>
 </head>
 <body>
 	<div class='wrapper'>
 		<div id='playing_field' class='cards'>
-			<div id='1' class='card'>
-				<p class='card_text'>Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p>
-			</div>
+			<div id='1' class='card'><p class='card_text hide'>Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div>
+			<div id='2' class='card'><p class='card_text'>2Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div>
 		</div>
 
 	</div>
 </body>
 <script>
 	//6 quotes
+	//needs limits for quotes
 	var cards = [
 		["All my life, I always wanted to be somebody. Now I see that I should have been more specific.", "Jane Wagner"],
 		["Love does not consist in gazing at each other, but in looking outward together in the same direction.", "Antoine de Saint-Exupery"],
@@ -69,6 +74,22 @@
 	];
 
 	var board = document.getElementById('playing_field');
+	var click_cards = document.getElementsByClassName('card');
 
+	var count = 0;
+	for(var i=0; i < click_cards.length; i++){
+		console.log(i);
+		click_cards[i].addEventListener('click',
+			function(evt){
+				console.log(evt.currentTarget);
+				console.log(evt.currentTarget.offsetParent === null);
+				console.log(evt.target);
+				console.log(evt.target.offsetParent === null);
+			
+				console.log(click_cards[count].childNodes[0].className);
+				count++;
+			}
+		);
+	}
 </script>
 </html>
