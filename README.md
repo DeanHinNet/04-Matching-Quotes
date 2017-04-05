@@ -1,2 +1,2 @@
 Match the quotes and win...some knowledge!
-http://www.google.com/stuff
+<a href='http://www.google.com' target='_blank'>http://www.google.com</a>
