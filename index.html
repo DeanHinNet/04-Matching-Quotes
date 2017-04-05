@@ -22,31 +22,40 @@
 			padding: 0;
 		}
 		.cards {
-			width: 800px;
+			width: 770px;
 			border: 1px solid #000;
 			margin: 0 auto;
 		}
 
 		.card {
 			display: inline-block;
-			width: 150px;
-			height: 150px;
+			width: 180px;
+			height: 180px;
 			border: 1px solid #000;
 			margin: 5px;
-
+			vertical-align: bottom;
 		}
-
 		.card_text {
 			display: inline-block;
 			position: relative;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-
-			max-width: 130px;
-			word-wrap: break-word;
 		}
 
+		.quote {
+			display: inline-block;
+			max-width: 150px;
+			-webkit-hyphens: auto;
+		  -moz-hyphens: auto;
+		  -ms-hyphens: auto;
+		  hyphens: auto;
+
+			word-wrap: break-word;
+		}
+		.quotee {
+			margin-top: 8px;
+		}
 		.hide {
 			visibility: hidden;
 		}
@@ -55,8 +64,8 @@
 <body>
 	<div class='wrapper'>
 		<div id='playing_field' class='cards'>
-			<div id='1' class='card'><p class='card_text hide'>Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div>
-			<div id='2' class='card'><p class='card_text'>2Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div>
+			<!-- <div id='1' class='card'><p class='card_text hide'>Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div>
+			<div id='2' class='card'><p class='card_text'>2Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div> -->
 		</div>
 
 	</div>
@@ -75,21 +84,47 @@
 
 	var board = document.getElementById('playing_field');
 	var click_cards = document.getElementsByClassName('card');
+	var card_order = [];
 
-	var count = 0;
+	for(i=0; i<cards.length; i++){
+		card_order[i] = i;
+		card_order[i+cards.length] = i;
+	}
+
+	function shuffle(array){
+		var tmp, current, top = array.length;
+		if(top) while(--top){
+			current = Math.floor(Math.random() * (top + 1));
+			tmp = array[current];
+			array[current] = array[top];
+			array[top] = tmp;
+		}
+		return array;
+	}
+
+	card_order = shuffle(card_order);
+	console.log(card_order);
+
+	for(var i=0; i < cards.length*2; i++){
+		board.innerHTML += "<div id='" + i + "' class='card'><div class='card_text'><p class='quote'>''" + cards[card_order[i]][0] + "''</p><p class='quotee'>-" + cards[card_order[i]][1] +"</p></div></div>";
+	}
+
+
 	for(var i=0; i < click_cards.length; i++){
-		console.log(i);
+
 		click_cards[i].addEventListener('click',
 			function(evt){
-				console.log(evt.currentTarget);
-				console.log(evt.currentTarget.offsetParent === null);
-				console.log(evt.target);
-				console.log(evt.target.offsetParent === null);
+				// console.log(evt.currentTarget);
+				// console.log(evt.currentTarget.offsetParent === null);
+				// console.log(evt.target);
+				// console.log(evt.target.offsetParent === null);
+				// console.log(count);
+				// console.log(click_cards[count].childNodes[0].className);
 			
-				console.log(click_cards[count].childNodes[0].className);
-				count++;
 			}
 		);
+		
 	}
+	
 </script>
 </html>
