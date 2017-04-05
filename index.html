@@ -2,72 +2,18 @@
 <html>
 <head>
 	<title></title>
+
+	<link rel='stylesheet' type='text/css' href='main.css'>
 	<!--
-	black #000
-	white #fff
-	red #ff0000
-	green #00ff00
-	blue #0000ff
-	
-	yellow #ffff00
-	magenta #ff00ff
-	cyan #00ffff
-	gray #808080
-	silver #c0c0c0
-
+	[x] Added break-line for card text.
+	[x] Added 'Quotee' and centering for cards.
+	[x] Added function to create the cards X2 and randomize the order of the cards.
+	[] Hide/Show a card based on click..
 -->
-	<style>
-		p {
-			margin: 0;
-			padding: 0;
-		}
-		.cards {
-			width: 770px;
-			border: 1px solid #000;
-			margin: 0 auto;
-		}
-
-		.card {
-			display: inline-block;
-			width: 180px;
-			height: 180px;
-			border: 1px solid #000;
-			margin: 5px;
-			vertical-align: bottom;
-		}
-		.card_text {
-			display: inline-block;
-			position: relative;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
-
-		.quote {
-			display: inline-block;
-			max-width: 150px;
-			-webkit-hyphens: auto;
-		  -moz-hyphens: auto;
-		  -ms-hyphens: auto;
-		  hyphens: auto;
-
-			word-wrap: break-word;
-		}
-		.quotee {
-			margin-top: 8px;
-		}
-		.hide {
-			visibility: hidden;
-		}
-	</style>
 </head>
 <body>
 	<div class='wrapper'>
-		<div id='playing_field' class='cards'>
-			<!-- <div id='1' class='card'><p class='card_text hide'>Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div>
-			<div id='2' class='card'><p class='card_text'>2Hello toauthaosteuhsoahutsaotnuhnstoahutnsaohutnshtnosauhtnsaohutnsaohtnsuatnosuhtnaohnsuaotnsu</p></div> -->
-		</div>
-
+		<div id='playing_field' class='cards'></div>
 	</div>
 </body>
 <script>
@@ -79,7 +25,8 @@
 		["A dog teaches a boy fidelity, perseverance, and to turn around three times before lying down.","Robert Benchley"],
 		["You can always tell a real friend: when you've made a fool of yourself he doesn't feel you've done a permanent job.", "Laurence J. Peter"],
 		["Give me a museum and I'll fill it.", "Pablo Picasso"],
-		['It is impossible to persuade a man who does not disagree, but smiles.','Muriel Spark']
+		['It is impossible to persuade a man who does not disagree, but smiles.','Muriel Spark'],
+		["I'm not interested in how you feel. I'm interested in what you become.",'Dean Hin']
 	];
 
 	var board = document.getElementById('playing_field');
@@ -103,7 +50,6 @@
 	}
 
 	card_order = shuffle(card_order);
-	console.log(card_order);
 
 	for(var i=0; i < cards.length*2; i++){
 		board.innerHTML += "<div id='" + i + "' class='card'><div class='card_text'><p class='quote'>''" + cards[card_order[i]][0] + "''</p><p class='quotee'>-" + cards[card_order[i]][1] +"</p></div></div>";

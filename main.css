@@ -1,0 +1,55 @@
+/*
+	black #000
+	white #fff
+	red #ff0000
+	green #00ff00
+	blue #0000ff
+	
+	yellow #ffff00
+	magenta #ff00ff
+	cyan #00ffff
+	gray #808080
+	silver #c0c0c0
+*/
+p {
+	margin: 0;
+	padding: 0;
+}
+.cards {
+	width: 770px;
+	border: 1px solid #000;
+	margin: 0 auto;
+}
+
+.card {
+	display: inline-block;
+	width: 180px;
+	height: 180px;
+	border: 1px solid #000;
+	margin: 5px;
+	vertical-align: bottom;
+}
+.card_text {
+	display: inline-block;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.quote {
+	display: inline-block;
+	max-width: 150px;
+	-webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+
+	word-wrap: break-word;
+}
+.quotee {
+	margin-top: 8px;
+}
+.hide {
+	visibility: hidden;
+}
